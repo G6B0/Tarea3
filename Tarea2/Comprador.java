@@ -24,8 +24,10 @@ package Tarea2;
             else{
                 sonido=b.sabor();
                 vuelto=0;
-                while(exp.getVuelto()!=null){
-                    vuelto+=100;
+                Moneda vueltoMoneda = exp.getVuelto();
+                while (vueltoMoneda != null) {
+                    vuelto += vueltoMoneda.getValor();
+                    vueltoMoneda = exp.getVuelto();
                 }
             }
         }

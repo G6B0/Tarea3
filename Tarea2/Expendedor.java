@@ -100,32 +100,97 @@ class Expendedor {
 
                 else {
                     if(selector==1) {
-                        for (int i = 0; i < (moneda.getValor() - TipoProductos.COCACOLA.getPrecio()) / 100; i++) {
-                            monVu.addElemento(new Moneda100());
+                        int vuelto= moneda.getValor() - TipoProductos.COCACOLA.getPrecio();
+                        while (vuelto > 0) {
+                            if (vuelto >= 1500) {
+                                monVu.addElemento(new Moneda1500());
+                                vuelto -= 1500;
+                            } else if (vuelto >= 1000) {
+                                monVu.addElemento(new Moneda1000());
+                                vuelto -= 1000;
+                            } else if (vuelto >= 500) {
+                                monVu.addElemento(new Moneda500());
+                                vuelto -= 500;
+                            } else if (vuelto >= 100) {
+                                monVu.addElemento(new Moneda100());
+                                vuelto -= 100;
+                            }
                         }
                         productoSeleccionado.addElemento(b);
                     }
                     else if(selector==2) {
-                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SPRITE.getPrecio()) / 100; i++) {
-                            monVu.addElemento(new Moneda100());
+                        int vuelto= moneda.getValor() - TipoProductos.SPRITE.getPrecio();
+                        while (vuelto > 0) {
+                            if (vuelto >= 1500) {
+                                monVu.addElemento(new Moneda1500());
+                                vuelto -= 1500;
+                            } else if (vuelto >= 1000) {
+                                monVu.addElemento(new Moneda1000());
+                                vuelto -= 1000;
+                            } else if (vuelto >= 500) {
+                                monVu.addElemento(new Moneda500());
+                                vuelto -= 500;
+                            } else if (vuelto >= 100) {
+                                monVu.addElemento(new Moneda100());
+                                vuelto -= 100;
+                            }
                         }
                         productoSeleccionado.addElemento(b);
                     }
                     else if(selector==3) {
-                        for (int i = 0; i < (moneda.getValor() - TipoProductos.FANTA.getPrecio()) / 100; i++) {
-                            monVu.addElemento(new Moneda100());
+                        int vuelto= moneda.getValor() - TipoProductos.FANTA.getPrecio();
+                        while (vuelto > 0) {
+                            if (vuelto >= 1500) {
+                                monVu.addElemento(new Moneda1500());
+                                vuelto -= 1500;
+                            } else if (vuelto >= 1000) {
+                                monVu.addElemento(new Moneda1000());
+                                vuelto -= 1000;
+                            } else if (vuelto >= 500) {
+                                monVu.addElemento(new Moneda500());
+                                vuelto -= 500;
+                            } else if (vuelto >= 100) {
+                                monVu.addElemento(new Moneda100());
+                                vuelto -= 100;
+                            }
                         }
                         productoSeleccionado.addElemento(b);
                     }
                     else if(selector==4) {
-                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SNICKER.getPrecio()) / 100; i++) {
-                            monVu.addElemento(new Moneda100());
+                        int vuelto= moneda.getValor() - TipoProductos.SNICKER.getPrecio();
+                        while (vuelto > 0) {
+                            if (vuelto >= 1500) {
+                                monVu.addElemento(new Moneda1500());
+                                vuelto -= 1500;
+                            } else if (vuelto >= 1000) {
+                                monVu.addElemento(new Moneda1000());
+                                vuelto -= 1000;
+                            } else if (vuelto >= 500) {
+                                monVu.addElemento(new Moneda500());
+                                vuelto -= 500;
+                            } else if (vuelto >= 100) {
+                                monVu.addElemento(new Moneda100());
+                                vuelto -= 100;
+                            }
                         }
                         productoSeleccionado.addElemento(b);
                     }
                     else{
-                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SUPER8.getPrecio()) / 100; i++) {
-                            monVu.addElemento(new Moneda100());
+                        int vuelto= moneda.getValor() - TipoProductos.SUPER8.getPrecio();
+                        while (vuelto > 0) {
+                            if (vuelto >= 1500) {
+                                monVu.addElemento(new Moneda1500());
+                                vuelto -= 1500;
+                            } else if (vuelto >= 1000) {
+                                monVu.addElemento(new Moneda1000());
+                                vuelto -= 1000;
+                            } else if (vuelto >= 500) {
+                                monVu.addElemento(new Moneda500());
+                                vuelto -= 500;
+                            } else if (vuelto >= 100) {
+                                monVu.addElemento(new Moneda100());
+                                vuelto -= 100;
+                            }
                         }
                         productoSeleccionado.addElemento(b);
                     }
