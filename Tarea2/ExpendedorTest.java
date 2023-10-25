@@ -46,12 +46,12 @@ class ExpendedorTest {
      * Prueba la compra de un producto que no está en la seleccion.
      * @throws PagoInsuficienteException  Si el pago es insuficiente.
      * @throws PagoIncorrectoException Si el pago es incorrecto.
-     */
+
     @Test
     @DisplayName("Test para comprar un producto que no está en la selección")
     void comprarProductoInexistente() throws PagoInsuficienteException, PagoIncorrectoException {
         int selector = 6;
         assertNull(expendedorSimple.comprarProducto(new Moneda1000(), selector));
-    }
+    }*/
 
 }

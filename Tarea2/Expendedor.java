@@ -12,11 +12,13 @@ class Expendedor {
     /**Deposito de snickers*/
     public Deposito<Dulces> snickers;
     /**Deposito de super8*/
+    private Deposito<Producto> productoSeleccionado;
     public Deposito<Dulces> super8;
     /**Constructor llena los depositos de los productos
      * @param numProductos
      */
     public Expendedor(int numProductos) {
+        productoSeleccionado = new Deposito<>();
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
         this.monVu = new Deposito<>();
@@ -41,7 +43,7 @@ class Expendedor {
      * @throws PagoIncorrectoException Si la moneda es nula o no válida.
      * @throws PagoInsuficienteException Si el pago es insuficiente para el producto.
      */
-    public Producto comprarProducto(Moneda moneda,int selector) throws PagoInsuficienteException,PagoIncorrectoException{
+    public void comprarProducto(Moneda moneda,int selector) throws PagoInsuficienteException,PagoIncorrectoException{
         Producto b=null;
         if(moneda==null) {
             throw new PagoIncorrectoException("Error: Pago Incorrecto");
@@ -69,32 +71,31 @@ class Expendedor {
             }
             if (b == null) {
                 monVu.addElemento(moneda);
-                return null;
             }
             else {
                 if ((b instanceof CocaCola) && (moneda.getValor() < TipoProductos.COCACOLA.getPrecio())) {
-                    coca.addElemento((Bebida)b);
+                    coca.addElemento((CocaCola)b);
                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
-                 if ((moneda.getValor() < TipoProductos.SPRITE.getPrecio()) && (b instanceof Sprite)) {
+                if ((moneda.getValor() < TipoProductos.SPRITE.getPrecio()) && (b instanceof Sprite)) {
                     sprite.addElemento((Sprite)b);
-                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
+                    throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.FANTA.getPrecio()) && (b instanceof Fanta)){
                     fanta.addElemento((Fanta)b);
-                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
+                    throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.SNICKER.getPrecio()) && (b instanceof Snickers)){
                     snickers.addElemento((Snickers)b);
-                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
+                    throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.SUPER8.getPrecio()) && (b instanceof Super8)){
                     super8.addElemento((Super8)b);
-                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
+                    throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else {
@@ -102,31 +103,31 @@ class Expendedor {
                         for (int i = 0; i < (moneda.getValor() - TipoProductos.COCACOLA.getPrecio()) / 100; i++) {
                             monVu.addElemento(new Moneda100());
                         }
-                        return b;
+                        productoSeleccionado.addElemento(b);
                     }
                     else if(selector==2) {
                         for (int i = 0; i < (moneda.getValor() - TipoProductos.SPRITE.getPrecio()) / 100; i++) {
                             monVu.addElemento(new Moneda100());
                         }
-                        return b;
+                        productoSeleccionado.addElemento(b);
                     }
                     else if(selector==3) {
                         for (int i = 0; i < (moneda.getValor() - TipoProductos.FANTA.getPrecio()) / 100; i++) {
                             monVu.addElemento(new Moneda100());
                         }
-                        return b;
+                        productoSeleccionado.addElemento(b);
                     }
                     else if(selector==4) {
                         for (int i = 0; i < (moneda.getValor() - TipoProductos.SNICKER.getPrecio()) / 100; i++) {
                             monVu.addElemento(new Moneda100());
                         }
-                        return b;
+                        productoSeleccionado.addElemento(b);
                     }
                     else{
                         for (int i = 0; i < (moneda.getValor() - TipoProductos.SUPER8.getPrecio()) / 100; i++) {
                             monVu.addElemento(new Moneda100());
                         }
-                        return b;
+                        productoSeleccionado.addElemento(b);
                     }
                 }
             }
@@ -137,5 +138,8 @@ class Expendedor {
      */
     public Moneda getVuelto(){
         return monVu.getElemento();
+    }
+    public Producto getProducto(){
+        return productoSeleccionado.getElemento();
     }
 }
