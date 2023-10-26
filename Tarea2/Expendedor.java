@@ -1,6 +1,6 @@
 package Tarea2;
 
-class Expendedor {
+public class Expendedor {
     /**Deposito de cocacola*/
     private Deposito<Bebida> coca;
     /**Deposito de sprite*/

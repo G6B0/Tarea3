@@ -1,7 +1,7 @@
 package Tarea2;
 
 /**Clase que sirve polimorficamente para las subclases de bebida*/
-abstract class Bebida extends Producto{
+public abstract class Bebida extends Producto{
     /**Numero de serie(propiedad)*/
     private int nserie;
     /**Constructor inicializa la variable de serie*/

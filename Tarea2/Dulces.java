@@ -1,7 +1,7 @@
 package Tarea2;
 
 /**Clase dulces que servira para crear subclases polimorficamente*/
-abstract class Dulces extends Producto{
+public abstract class Dulces extends Producto{
     private int nserie;
     /**Constructor inicializa la propiedad numero de serie
      * @param nserie
