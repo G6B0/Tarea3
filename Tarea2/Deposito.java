@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * de cualquier tipo especificado por el parámetro tipo T.
  */
 public class Deposito<T> {
-    private ArrayList<T> deposito;
+    public ArrayList<T> deposito;
 
     /**Constructor por defecto que inicializa un nuevo depósito vacío.
      */

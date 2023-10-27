@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelExpendedor extends JPanel {
-    private PanelProductos productos;
-    private PanelDepositos depositos;
+    private VistasProducto productos;
+    private VistasDeposito depositos;
 
 
     public PanelExpendedor() {
         this.setLayout(null);
         this.setBounds(1, 1, 750, 650);
-        depositos = new PanelDepositos();
+        depositos = new VistasDeposito();
     }
 
     public void paint(Graphics g) {

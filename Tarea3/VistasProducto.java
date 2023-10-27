@@ -9,13 +9,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PanelProductos extends JPanel {
+public class VistasProducto extends JPanel {
     private BufferedImage imagen;
     private Producto producto;
     private int ejeX;
     private int ejeY;
 
-    public PanelProductos(Producto producto, int ejeX, int ejeY) {
+    public VistasProducto(Producto producto, int ejeX, int ejeY) {
         super();
         this.ejeX=ejeX;
         this.ejeY=ejeY;
@@ -53,12 +53,7 @@ public class PanelProductos extends JPanel {
             g.setColor(Color.gray);
             g.drawString(super.getToolTipText(), ejeX, ejeY);
             g.drawString("nªSerie:  "+producto.getSerie(),ejeX,ejeY+100);
-
-            // eje Y Posición Y
-            int width = 150; // Ancho
-            int height = 100; // Alto
-
-            g.drawImage(imagen, ejeX, ejeY, width, height, this);
+            g.drawImage(imagen, ejeX, ejeY,40, 60, this);
   }
 }
 
