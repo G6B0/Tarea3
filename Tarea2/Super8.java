@@ -12,6 +12,6 @@ public class Super8 extends Dulces{
      */
     @Override
     public String sabor() {
-        return super.sabor()+"super8";
+        return "Super8";
     }
 }

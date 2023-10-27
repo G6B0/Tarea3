@@ -12,6 +12,6 @@ public class Sprite extends Bebida {
      */
     @Override
     public String sabor() {
-        return super.sabor()+"sprite";
+        return "Sprite";
     }
 }

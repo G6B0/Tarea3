@@ -19,7 +19,5 @@ public abstract class Bebida extends Producto{
      * @return String de sabor:*/
 
     @Override
-    public String sabor() {
-        return "Sabor a: ";
-    }
+    public abstract String sabor();
 }

@@ -16,8 +16,7 @@ public abstract class Dulces extends Producto{
     /**Metodo que retorna el sabor inicial
      * @return sabor de...
      */
+
     @Override
-    public String sabor() {
-        return "Sabor a: ";
-    }
+    public abstract String sabor();
 }

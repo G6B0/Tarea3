@@ -12,6 +12,6 @@ public class Snickers extends Dulces{
      */
     @Override
     public String sabor() {
-        return super.sabor()+"snicker";
+        return "Snicker";
     }
 }

@@ -11,6 +11,6 @@ public class Fanta extends Bebida{
      */
     @Override
     public String sabor() {
-        return super.sabor()+"fanta";
+        return "Fanta";
     }
 }

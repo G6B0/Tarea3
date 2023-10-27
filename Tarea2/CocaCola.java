@@ -13,6 +13,6 @@ public class CocaCola extends Bebida {
      */
     @Override
     public String sabor() {
-        return super.sabor()+"cocacola";
+        return "Cocacola";
     }
 }
