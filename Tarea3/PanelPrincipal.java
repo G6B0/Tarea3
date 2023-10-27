@@ -9,13 +9,13 @@ public class PanelPrincipal extends JPanel {
     private PanelComprador com;
     private PanelExpendedor exp;
     public PanelPrincipal(){
-        this.setLayout(new BorderLayout());
+        this.setLayout(null);
         exp = new PanelExpendedor();
         com = new PanelComprador();
     }
     public void paint (Graphics g){
         super.paint(g);
-        com.paint(g);
         exp.paint(g);
+        com.paint(g);
     }
 }
