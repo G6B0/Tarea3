@@ -1,5 +1,7 @@
 package Tarea3;
 
+import Tarea2.Expendedor;
+
 import javax.swing.*;
 import java.awt.*;
 

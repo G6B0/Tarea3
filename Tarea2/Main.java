@@ -180,6 +180,6 @@ public class Main {
         catch(NoHayProductoException e){
             System.out.println("No hay producto del tipo solicitado");
             System.out.println(null+", "+m.getValor());
-        }
+        }   
     }
 }
