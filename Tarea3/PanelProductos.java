@@ -22,18 +22,18 @@ public class PanelProductos extends JPanel {
         this.producto=producto;
         super.setToolTipText(producto.sabor());
         if(producto instanceof CocaCola) {
-            imagen = cargarImagen("C:\\Users\\Asus\\OneDrive\\Pictures\\Cocacolawena.png");
+            imagen = cargarImagen("images/cocacola.png");
         }
         else if(producto instanceof Sprite){
-            imagen = cargarImagen("C:\\Users\\Asus\\OneDrive\\Pictures\\Spritewena.png");
+            imagen = cargarImagen("images/sprite.png");
         }
         else if(producto instanceof Fanta){
-            imagen = cargarImagen("C:\\Users\\Asus\\OneDrive\\Pictures\\Fantawena.png");
+            imagen = cargarImagen("images/fanta.png");
         }
         else if(producto instanceof Snickers){
-            imagen = cargarImagen("C:\\Users\\Asus\\OneDrive\\Pictures\\Snickerweno.png");
+            imagen = cargarImagen("images/snicker.png");
         }else{
-            imagen = cargarImagen("C:\\Users\\Asus\\OneDrive\\Pictures\\Super8weno.png");
+            imagen = cargarImagen("images/super8.png");
         }
     }
 

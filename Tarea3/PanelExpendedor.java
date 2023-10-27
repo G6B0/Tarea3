@@ -22,8 +22,4 @@ public class PanelExpendedor extends JPanel {
         depositos.paint(g);
 
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
