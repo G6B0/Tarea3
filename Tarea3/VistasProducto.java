@@ -52,9 +52,8 @@ public class VistasProducto extends JPanel {
         if (imagen != null) {
             g.setColor(Color.gray);
             g.drawString(super.getToolTipText(), ejeX, ejeY);
-            g.drawString("nªSerie:  "+producto.getSerie(),ejeX,ejeY+100);
-            g.drawImage(imagen, ejeX, ejeY,40, 60, this);
+            /*g.drawString("nªSerie:  "+producto.getSerie(),ejeX,ejeY+100);*/
+            g.drawImage(imagen, ejeX, ejeY,150, 80, this);
   }
 }
-
 }

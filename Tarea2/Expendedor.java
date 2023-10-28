@@ -8,9 +8,9 @@ public class Expendedor {
     /**Deposito de fanta*/
     private Deposito<Bebida> fanta;
     /**Deposito de monedas*/
-    public Deposito<Moneda> monVu;
+    private Deposito<Moneda> monVu;
     /**Deposito de snickers*/
-    public Deposito<Dulces> snickers;
+    private Deposito<Dulces> snickers;
     /**Deposito de super8*/
     private Deposito<Producto> productoSeleccionado;
     public Deposito<Dulces> super8;

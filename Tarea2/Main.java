@@ -5,7 +5,7 @@ import Tarea3.Ventana;
 public class Main {
     public static void main(String[] args) throws NoHayProductoException, PagoIncorrectoException,PagoInsuficienteException {
         Ventana v= new Ventana();
-        Expendedor exp = new Expendedor(2);
+        Expendedor exp = new Expendedor(3);
         Moneda m;
         Comprador c;
         //compra exitosa para cada producto//

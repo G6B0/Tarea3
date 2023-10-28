@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class VistasDeposito<T> extends JPanel {
     private BufferedImage imagen;
-    private Deposito<T> deposito;
+    private Deposito<VistasProducto> deposito;
     private int ejeX;
     private int ejeY;
     public VistasDeposito(int ejeX, int ejeY){
@@ -31,14 +31,19 @@ public class VistasDeposito<T> extends JPanel {
             return null;
         }
     }
-    public void agregarVistas(T vistas){
-        deposito.addElemento(vistas);
+    public void agregarProducto(VistasProducto producto) {
+        deposito.addElemento(producto);
     }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (imagen != null) {
-            g.drawImage(imagen, ejeX, ejeY, 150, 50, this);
+            g.drawRect(ejeX, ejeY, 500, 100);
+            int offsetX = 10;
+
+            for (VistasProducto producto : deposito.deposito) {
+                producto.paintComponent(g);
+                ejeX += offsetX;
+
         }
     }
 }
