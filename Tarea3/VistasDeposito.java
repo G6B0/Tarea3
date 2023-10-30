@@ -18,6 +18,9 @@ public class VistasDeposito<T> extends JPanel {
         deposito.addElemento(producto);
         add(producto);
     }
+    public Deposito getDeposito(){
+        return deposito;
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
