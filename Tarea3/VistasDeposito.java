@@ -1,49 +1,57 @@
 package Tarea3;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
+import javax.swing.border.Border;
 import Tarea2.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
 public class VistasDeposito<T> extends JPanel {
-    private BufferedImage imagen;
     private Deposito<VistasProducto> deposito;
-    private int ejeX;
-    private int ejeY;
-    public VistasDeposito(int ejeX, int ejeY){
-        this.ejeX=ejeX;
-        this.ejeY=ejeY;
+
+    public VistasDeposito() {
         deposito = new Deposito<>();
-        imagen=cargarImagen("images/deposito.png");
+        setPreferredSize(new Dimension(300, 100));
     }
 
-    private BufferedImage cargarImagen(String ruta) {
-        try {
-            return ImageIO.read(new File(ruta));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     public void agregarProducto(VistasProducto producto) {
         deposito.addElemento(producto);
+        add(producto);
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-            g.drawRect(ejeX, ejeY, 500, 100);
-            int offsetX = 10;
+        g.drawRect(0, 0, 300, 100);
 
-            for (VistasProducto producto : deposito.deposito) {
-                producto.paintComponent(g);
-                ejeX += offsetX;
-
+        int cantidad = deposito.deposito.size();
+        int regionAncho = 300/ 3;
+        for (int i = 0; i < cantidad; i++) {
+            int x = (i % 3) * regionAncho;
+            deposito.deposito.get(i).setBounds(x+2, 1, 90, 90);
         }
     }
+   /* public static void main(String[] args) {
+        // Crear un nuevo depósito
+        VistasDeposito<VistasProducto> deposito = new VistasDeposito<>();
+
+        // Crear productos y agregarlos al depósito
+        VistasProducto producto1 = new VistasProducto(new CocaCola(2),90,70);
+        VistasProducto producto3 = new VistasProducto(new CocaCola(5),90,70);
+        VistasProducto producto4 = new VistasProducto(new CocaCola(3),90,70);
+        deposito.agregarProducto(producto4);
+        deposito.agregarProducto(producto1);
+        deposito.agregarProducto(producto3);
+        // Crear una ventana para mostrar el depósito
+        JFrame ventana = new JFrame("Prueba del Depósito");
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setSize(290, 200);
+
+        // Agregar el depósito a la ventana
+        ventana.add(deposito);
+
+        // Mostrar la ventana
+        ventana.setVisible(true);
+        System.out.println(deposito.deposito.deposito.size());
+    }*/
 }

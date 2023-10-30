@@ -12,28 +12,26 @@ import java.io.IOException;
 public class VistasProducto extends JPanel {
     private BufferedImage imagen;
     private Producto producto;
-    private int ejeX;
-    private int ejeY;
+    private int ancho;
+    private int alto;
 
-    public VistasProducto(Producto producto, int ejeX, int ejeY) {
+    public VistasProducto(Producto producto,int ancho, int alto) {
         super();
-        this.ejeX=ejeX;
-        this.ejeY=ejeY;
-        this.producto=producto;
+        this.ancho=ancho;
+        this.alto=alto;
+        this.producto = producto;
         super.setToolTipText(producto.sabor());
-        if(producto instanceof CocaCola) {
-            imagen = cargarImagen("images/cocacola.png");
-        }
-        else if(producto instanceof Sprite){
-            imagen = cargarImagen("images/sprite.png");
-        }
-        else if(producto instanceof Fanta){
-            imagen = cargarImagen("images/fanta.png");
-        }
-        else if(producto instanceof Snickers){
-            imagen = cargarImagen("images/snicker.png");
+        setPreferredSize(new Dimension(ancho, alto));
+        if(producto instanceof CocaCola){
+            imagen=cargarImagen("images/cocacola.png");
+        }else if(producto instanceof Sprite){
+            imagen=cargarImagen("images/sprite.png");
+        }else if(producto instanceof Fanta){
+            imagen=cargarImagen("images/fanta.png");
+        }else if(producto instanceof Snickers){
+            imagen=cargarImagen("images/snicker.png");
         }else{
-            imagen = cargarImagen("images/super8.png");
+            imagen=cargarImagen("images/super8.png");
         }
     }
 
@@ -50,10 +48,25 @@ public class VistasProducto extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (imagen != null) {
-            g.setColor(Color.gray);
-            g.drawString(super.getToolTipText(), ejeX, ejeY);
-            /*g.drawString("nªSerie:  "+producto.getSerie(),ejeX,ejeY+100);*/
-            g.drawImage(imagen, ejeX, ejeY,150, 80, this);
-  }
-}
+            g.drawImage(imagen, 0, 0,ancho,alto, this);
+        }
+    }
+    /*public static void main(String[] args) {
+
+        VistasProducto producto = new VistasProducto(new CocaCola(2), 90, 60);
+
+        // Crea un JFrame y un panel para contener el producto
+        JFrame frame = new JFrame("Prueba de Producto");
+        JPanel panel = new JPanel();
+
+        // Agrega el producto al panel
+        panel.add(producto);
+
+        // Agrega el panel al JFrame
+        frame.add(panel);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(700, 100);
+        frame.setVisible(true);
+    }*/
 }
