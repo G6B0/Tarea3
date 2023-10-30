@@ -2,7 +2,7 @@ package Tarea2;
 
 /**Clase principalmente usada para calcular el vuelto
   *y el tipo de productor que se consume*/
-    class Comprador{
+   public class Comprador{
         /**Propiedades de sonido que cosumio y vuelto*/
         private String sonido;
         private int vuelto;

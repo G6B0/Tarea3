@@ -13,7 +13,7 @@ public class PanelPrincipal extends JPanel {
         this.setLayout(new BorderLayout());
 
         exp = new PanelExpendedor(3);
-        com=new PanelComprador();
+        com=new PanelComprador(600,600);
     }
     public void paint (Graphics g){
         super.paint(g);
