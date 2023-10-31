@@ -23,9 +23,7 @@ public class PanelComprador extends JPanel implements MouseListener {
 
     public PanelComprador(int ancho, int alto) {
         int x, y;
-        //distancia del eje x//
         x = 100;
-        //distancia en el eje y//
         y = 30;
         this.setLayout(null);
         this.ancho=ancho;
@@ -112,7 +110,6 @@ public class PanelComprador extends JPanel implements MouseListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
     }
   public static void main(String[] args) {
             SwingUtilities.invokeLater(() -> {

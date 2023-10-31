@@ -1,7 +1,7 @@
 package Tarea2;
 
 /**Subclase Moneda100*/
-class Moneda100 extends Moneda implements Comparable<Moneda>{
+public class Moneda100 extends Moneda implements Comparable<Moneda>{
     /**Constructor por defecto inicializa el constructor de la superclase*/
     public Moneda100(){
         super();
@@ -23,7 +23,7 @@ class Moneda100 extends Moneda implements Comparable<Moneda>{
 /**toSring que retorna la referencia de esta referencia y su valor*/
     @Override
     public String toString() {
-        return "Numero de serie: " + super.toString() + ", Su valor es: " + getValor();
+        return super.toString();
     }
 
 

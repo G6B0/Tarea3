@@ -1,7 +1,7 @@
 package Tarea2;
 
 /**Clase representa Moneda y sera super clase de las demas monedas*/
-abstract class Moneda{
+public abstract class Moneda{
     /**Constructor se inicializa por defecto*/
     public Moneda(){
     }
