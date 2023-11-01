@@ -21,6 +21,18 @@ public class VistasDeposito<T> extends JPanel {
     public Deposito getDeposito(){
         return deposito;
     }
+    public VistasProducto quitarVista() {
+        if (deposito.deposito.size() == 0) {
+            return null;
+        } else {
+            VistasProducto vista = deposito.getElemento();
+            remove(vista);
+            revalidate();
+            repaint();
+            return vista;
+        }
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {

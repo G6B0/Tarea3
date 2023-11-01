@@ -18,12 +18,13 @@ import java.io.IOException;
         private VistasDeposito<VistasProducto> depFanta;
         private VistasDeposito<VistasProducto> depSnickers;
         private VistasDeposito<VistasProducto> depSuper8;
+        private VistasDeposito<VistasProducto> depProductoSelec;
         private Expendedor expendedor;
-        private int cantidad;
+        private Producto productoSelec;
+
 
         public PanelExpendedor(int cantidad) {
             setPreferredSize(new Dimension(700, 700));
-            this.cantidad = cantidad;
             this.imagen = cargarImagen("images/expendedor.jpg");
             this.expendedor = new Expendedor(cantidad);
             this.addMouseListener(this);
@@ -32,6 +33,7 @@ import java.io.IOException;
             depFanta = new VistasDeposito<>();
             depSnickers = new VistasDeposito<>();
             depSuper8 = new VistasDeposito<>();
+            depProductoSelec= new VistasDeposito<>();
             for (int i = 1; i <= cantidad; i++) {
                 depCocacola.agregarProducto(new VistasProducto(new CocaCola(10 + i), 90, 70));
                 depSprite.agregarProducto(new VistasProducto(new Sprite(20 + i), 90, 70));
@@ -47,6 +49,22 @@ import java.io.IOException;
                 e.printStackTrace();
                 return null;
             }
+        }
+        public void realizarCompra(Moneda moneda, int selector) throws PagoInsuficienteException, PagoIncorrectoException {
+            expendedor.comprarProducto(moneda,selector);
+            this.productoSelec=expendedor.getProducto();
+            if(productoSelec instanceof CocaCola){
+                depProductoSelec.agregarProducto(depCocacola.quitarVista());
+            }else if(productoSelec instanceof Sprite){
+                depProductoSelec.agregarProducto(depSprite.quitarVista());
+            }else if(productoSelec instanceof Fanta){
+                depProductoSelec.agregarProducto(depFanta.quitarVista());
+            }else if(productoSelec instanceof Snickers){
+                depProductoSelec.agregarProducto(depSnickers.quitarVista());
+            }else if(productoSelec instanceof Super8){
+                depProductoSelec.agregarProducto(depSuper8.quitarVista());
+            }
+            repaint();
         }
         @Override
         protected void paintComponent(Graphics g) {
@@ -64,6 +82,9 @@ import java.io.IOException;
                 add(depSnickers);
                 depSuper8.setLocation(95, 480);
                 add(depSuper8);
+                depProductoSelec.setSize(160,75);
+                depProductoSelec.setLocation(490,500);
+                add(depProductoSelec);
             }
         }
         @Override
@@ -93,5 +114,16 @@ import java.io.IOException;
         }
         @Override
         public void mouseExited(MouseEvent e) {
+        }
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(() -> {
+                JFrame frame = new JFrame();
+                PanelExpendedor panelExpendedor = new PanelExpendedor(3);
+
+                frame.add(panelExpendedor);
+                frame.setSize(700, 700);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
+            });
         }
     }

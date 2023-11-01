@@ -1,9 +1,7 @@
 package Tarea3;
 
 
-import Tarea2.NoHayProductoException;
-import Tarea2.PagoIncorrectoException;
-import Tarea2.PagoInsuficienteException;
+import Tarea2.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +14,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
 
     public PanelPrincipal() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         exp = new PanelExpendedor(3);
-        com = new PanelComprador(600, 600,3);
+        com = new PanelComprador();
         this.addMouseListener(this);
         com.getComprar1().addMouseListener(this);
         com.getComprar2().addMouseListener(this);
@@ -39,7 +37,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             com.paintComponent(g);
         }
     }
-    
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Mi Aplicación");
@@ -64,19 +62,55 @@ public class PanelPrincipal extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent()==com.getComprar1 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
+            try {
+                exp.realizarCompra(com.getMonedaEscogida(),1);
+            } catch (PagoInsuficienteException ex) {
+                throw new RuntimeException(ex);
+            } catch (PagoIncorrectoException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getComponent()==com.getComprar2 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
+            try {
+                exp.realizarCompra(com.getMonedaEscogida(),2);
+            } catch (PagoInsuficienteException ex) {
+                throw new RuntimeException(ex);
+            } catch (PagoIncorrectoException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getComponent()==com.getComprar3 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
+            try {
+                exp.realizarCompra(com.getMonedaEscogida(),3);
+            } catch (PagoInsuficienteException ex) {
+                throw new RuntimeException(ex);
+            } catch (PagoIncorrectoException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getComponent()==com.getComprar4 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
+            try {
+                exp.realizarCompra(com.getMonedaEscogida(),4);
+            } catch (PagoInsuficienteException ex) {
+                throw new RuntimeException(ex);
+            } catch (PagoIncorrectoException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getComponent()==com.getComprar5 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
+            try {
+                exp.realizarCompra(com.getMonedaEscogida(),4);
+            } catch (PagoInsuficienteException ex) {
+                throw new RuntimeException(ex);
+            } catch (PagoIncorrectoException ex) {
+                throw new RuntimeException(ex);
+            }
         }
+        repaint();
     }
 
     @Override
