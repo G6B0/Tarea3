@@ -1,10 +1,14 @@
 package Tarea3;
 
+import Tarea2.NoHayProductoException;
+import Tarea2.PagoIncorrectoException;
+import Tarea2.PagoInsuficienteException;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Ventana extends JFrame {
-    public Ventana() {
+    public Ventana() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         super();
         this.add(new PanelPrincipal());
         this.setTitle("Máquina Expendedora");
