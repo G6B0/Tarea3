@@ -10,10 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class PanelComprador extends JPanel implements MouseListener {
-    private int ancho;
-    private int alto;
-
-
     private JButton Comprar1;
     private JButton Comprar2;
     private JButton Comprar3;
@@ -34,18 +30,17 @@ public class PanelComprador extends JPanel implements MouseListener {
     private int y;
     private int respuesta =JOptionPane.NO_OPTION;
     private Comprador comprador;
+    private Producto productoSelec;
     private Expendedor expendedor;
 
 
 
-    public PanelComprador(int ancho, int alto,int cantidad) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+    public PanelComprador() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         x = 100;
         y = 30;
         this.setLayout(null);
-        expendedor = new Expendedor(cantidad);
-        this.ancho=ancho;
-        this.alto=alto;
-        setPreferredSize(new Dimension(ancho,alto));
+        this.expendedor = new Expendedor(3);
+        setPreferredSize(new Dimension(600,600));
         JLabel Cocacola = new JLabel("Coca-Cola");
         JLabel Sprite = new JLabel("Sprite");
         JLabel Fanta = new JLabel("Fanta");
@@ -144,21 +139,21 @@ public class PanelComprador extends JPanel implements MouseListener {
         su8.setBounds(x - 100, y + 400, 80, 50);
         add(su8);
 
-        moneda100.setBounds(x+400,y,100,100);
+        moneda100.setBounds(x+120,y,100,100);
         add(moneda100);
-        moneda500.setBounds(x+400,y+150,100,100);
+        moneda500.setBounds(x+120,y+150,100,100);
         add(moneda500);
-        moneda1000.setBounds(x+400,y+300,100,100);
+        moneda1000.setBounds(x+120,y+300,100,100);
         add(moneda1000);
-        moneda1500.setBounds(x+400,y+450,100,100);
+        moneda1500.setBounds(x+120,y+450,100,100);
         add(moneda1500);
     }
-   public static void main(String[] args) {
+  public static void main(String[] args) {
             SwingUtilities.invokeLater(() -> {
                 JFrame frame = new JFrame("Expendedor de Bebidas");
                 PanelComprador panelComprador = null;
                 try {
-                    panelComprador = new PanelComprador(600,600,2);
+                    panelComprador = new PanelComprador();
                 } catch (NoHayProductoException e) {
                     throw new RuntimeException(e);
                 } catch (PagoInsuficienteException e) {
@@ -174,7 +169,9 @@ public class PanelComprador extends JPanel implements MouseListener {
                 frame.setVisible(true);
             });
     }
-
+    public Moneda getMonedaEscogida(){
+        return escogida;
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -293,7 +290,8 @@ public class PanelComprador extends JPanel implements MouseListener {
         else{
             JOptionPane.showMessageDialog(null,"Aun no has escogido una moneda!");
         }
-    }public JButton getComprar1() {
+    }
+    public JButton getComprar1() {
         return Comprar1;
     }
 

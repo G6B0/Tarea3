@@ -1,5 +1,6 @@
 package Tarea3;
 
+import Tarea2.Expendedor;
 import Tarea2.NoHayProductoException;
 import Tarea2.PagoIncorrectoException;
 import Tarea2.PagoInsuficienteException;
