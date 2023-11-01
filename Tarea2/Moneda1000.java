@@ -22,6 +22,6 @@ public class Moneda1000 extends Moneda implements Comparable<Moneda> {
     }
     @Override
     public String toString() {
-        return super.toString();
+        return "Moneda de 1000";
     }
 }

@@ -23,7 +23,7 @@ public class Moneda100 extends Moneda implements Comparable<Moneda>{
 /**toSring que retorna la referencia de esta referencia y su valor*/
     @Override
     public String toString() {
-        return super.toString();
+        return "Moneda de 100";
     }
 
 
