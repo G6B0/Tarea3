@@ -11,17 +11,18 @@ import java.awt.event.MouseListener;
 public class PanelPrincipal extends JPanel implements MouseListener {
     private PanelComprador com;
     private PanelExpendedor exp;
+    private VistasDeposito<VistasMonedas> depMonvu;
 
     public PanelPrincipal() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         exp = new PanelExpendedor(3);
-        com = new PanelComprador();
+        com = new PanelComprador(exp);
         this.addMouseListener(this);
         com.getComprar1().addMouseListener(this);
         com.getComprar2().addMouseListener(this);
         com.getComprar3().addMouseListener(this);
         com.getComprar4().addMouseListener(this);
         com.getComprar5().addMouseListener(this);
-
+        depMonvu=new VistasDeposito<>();
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -35,6 +36,11 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             add(com);
             com.setLocation(900,0);
             com.paintComponent(g);
+        }
+        if(depMonvu != null){
+            add(depMonvu);
+            depMonvu.setLocation(900,600);
+            depMonvu.paintComponent(g);
         }
     }
 
@@ -53,7 +59,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             }
             frame.add(panelPrincipal);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1900, 1080);
+            frame.setSize(1920, 1080);
             frame.setVisible(true);
         });
     }
@@ -63,7 +69,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar1 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.realizarCompra(com.getMonedaEscogida(),1);
+                exp.cambioVista(com.getMonedaEscogida(),1);
+                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 throw new RuntimeException(ex);
             } catch (PagoIncorrectoException ex) {
@@ -73,7 +80,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar2 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.realizarCompra(com.getMonedaEscogida(),2);
+                exp.cambioVista(com.getMonedaEscogida(),2);
             } catch (PagoInsuficienteException ex) {
                 throw new RuntimeException(ex);
             } catch (PagoIncorrectoException ex) {
@@ -83,7 +90,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar3 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.realizarCompra(com.getMonedaEscogida(),3);
+                exp.cambioVista(com.getMonedaEscogida(),3);
             } catch (PagoInsuficienteException ex) {
                 throw new RuntimeException(ex);
             } catch (PagoIncorrectoException ex) {
@@ -93,7 +100,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar4 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.realizarCompra(com.getMonedaEscogida(),4);
+                exp.cambioVista(com.getMonedaEscogida(),4);
             } catch (PagoInsuficienteException ex) {
                 throw new RuntimeException(ex);
             } catch (PagoIncorrectoException ex) {
@@ -103,7 +110,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar5 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.realizarCompra(com.getMonedaEscogida(),4);
+                exp.cambioVista(com.getMonedaEscogida(),4);
             } catch (PagoInsuficienteException ex) {
                 throw new RuntimeException(ex);
             } catch (PagoIncorrectoException ex) {

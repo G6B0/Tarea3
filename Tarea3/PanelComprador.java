@@ -30,17 +30,15 @@ public class PanelComprador extends JPanel implements MouseListener {
     private int y;
     private int respuesta =JOptionPane.NO_OPTION;
     private Comprador comprador;
-    private Producto productoSelec;
     private Expendedor expendedor;
+    private int vuelto;
 
-
-
-    public PanelComprador() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+    public PanelComprador(PanelExpendedor panelExpendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         x = 100;
         y = 30;
         this.setLayout(null);
-        this.expendedor = new Expendedor(3);
-        setPreferredSize(new Dimension(600,600));
+        this.expendedor = panelExpendedor.getExpendedor();
+        setPreferredSize(new Dimension(600,800));
         JLabel Cocacola = new JLabel("Coca-Cola");
         JLabel Sprite = new JLabel("Sprite");
         JLabel Fanta = new JLabel("Fanta");
@@ -128,9 +126,12 @@ public class PanelComprador extends JPanel implements MouseListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         coca.setBounds(x - 100, y, 90, 70);
+        coca.paintComponent(g);
         add(coca);
         sprt.setBounds(x - 100, y + 100, 90, 70);
+        sprt.paintComponent(g);
         add(sprt);
         fnt.setBounds(x - 100, y + 200, 90, 70);
         add(fnt);
@@ -138,7 +139,6 @@ public class PanelComprador extends JPanel implements MouseListener {
         add(snick);
         su8.setBounds(x - 100, y + 400, 80, 50);
         add(su8);
-
         moneda100.setBounds(x+120,y,100,100);
         add(moneda100);
         moneda500.setBounds(x+120,y+150,100,100);
@@ -153,7 +153,7 @@ public class PanelComprador extends JPanel implements MouseListener {
                 JFrame frame = new JFrame("Expendedor de Bebidas");
                 PanelComprador panelComprador = null;
                 try {
-                    panelComprador = new PanelComprador();
+                    panelComprador = new PanelComprador(new PanelExpendedor(3));
                 } catch (NoHayProductoException e) {
                     throw new RuntimeException(e);
                 } catch (PagoInsuficienteException e) {
@@ -165,14 +165,16 @@ public class PanelComprador extends JPanel implements MouseListener {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(900, 900);
                 frame.setLayout(null);
-                panelComprador.setBounds(0, 0, 600, 600);
+                panelComprador.setBounds(0, 0, 600, 900);
                 frame.setVisible(true);
             });
     }
     public Moneda getMonedaEscogida(){
         return escogida;
     }
-
+public int getVuelto(){
+        return vuelto;
+}
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent()==moneda100){
@@ -200,6 +202,7 @@ public class PanelComprador extends JPanel implements MouseListener {
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,1,expendedor);
+                   this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -221,6 +224,7 @@ public class PanelComprador extends JPanel implements MouseListener {
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,2,expendedor);
+                    this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
@@ -239,6 +243,7 @@ public class PanelComprador extends JPanel implements MouseListener {
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,3,expendedor);
+                    this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
@@ -257,6 +262,7 @@ public class PanelComprador extends JPanel implements MouseListener {
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,4,expendedor);
+                    this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
@@ -275,6 +281,7 @@ public class PanelComprador extends JPanel implements MouseListener {
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,5,expendedor);
+                    this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
