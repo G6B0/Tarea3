@@ -50,7 +50,7 @@ import java.io.IOException;
                 return null;
             }
         }
-        public void realizarCompra(Moneda moneda, int selector) throws PagoInsuficienteException, PagoIncorrectoException {
+        public void cambioVista(Moneda moneda, int selector) throws PagoInsuficienteException, PagoIncorrectoException {
             expendedor.comprarProducto(moneda,selector);
             this.productoSelec=expendedor.getProducto();
             if(productoSelec instanceof CocaCola){
@@ -66,6 +66,22 @@ import java.io.IOException;
             }
             repaint();
         }
+
+        public Expendedor getExpendedor() {
+            return expendedor;
+        }
+        public void vistasMonvu(VistasDeposito<VistasMonedas> vistasDeposito) {
+            Moneda moneda = expendedor.getVuelto();
+            while (moneda != null) {
+                if (vistasDeposito.getDeposito().getElemento()==null) {
+                    vistasDeposito.agregarProducto(new VistasMonedas(moneda, Color.YELLOW));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Aqui esta su vuelto, Gracias por su compra");
+                }
+                moneda = expendedor.getVuelto();
+            }
+        }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

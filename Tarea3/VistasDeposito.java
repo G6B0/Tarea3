@@ -6,33 +6,33 @@ import Tarea2.*;
 import javax.swing.*;
 
 
-public class VistasDeposito<T> extends JPanel {
-    private Deposito<VistasProducto> deposito;
+public class VistasDeposito<T extends Component> extends JPanel {
+    private Deposito<T> deposito;
 
     public VistasDeposito() {
         deposito = new Deposito<>();
         setPreferredSize(new Dimension(350, 90));
     }
-
-    public void agregarProducto(VistasProducto producto) {
-        deposito.addElemento(producto);
-        add(producto);
+    public void agregarProducto(T elemento) {
+        deposito.addElemento(elemento);
+        add((Component) elemento);
     }
-    public Deposito getDeposito(){
+
+    public Deposito<T> getDeposito() {
         return deposito;
     }
-    public VistasProducto quitarVista() {
+
+    public T quitarVista() {
         if (deposito.deposito.size() == 0) {
             return null;
         } else {
-            VistasProducto vista = deposito.getElemento();
-            remove(vista);
+            T vista = deposito.getElemento();
+            remove((Component) vista);
             revalidate();
             repaint();
             return vista;
         }
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
