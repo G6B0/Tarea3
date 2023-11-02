@@ -7,6 +7,7 @@ package Tarea2;
         private String sonido;
         private int vuelto;
         private Producto b;
+        private Deposito<Moneda>depMonvu;
     /**Constructor principalmente calcula el vuelto, y su respectivo sonido al producto seleccionado
      * ademas de condicionar las exceptions para que se lanzen segun su condicion
      * @param m
@@ -16,6 +17,7 @@ package Tarea2;
         public Comprador(Moneda m,int cualProducto,Expendedor exp)throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
             exp.comprarProducto(m, cualProducto);
             b = exp.getProducto();
+            depMonvu = new Deposito<>();
             if(b==null){
                 throw new NoHayProductoException("No hay producto deseado en la maquina");
             }
@@ -23,11 +25,12 @@ package Tarea2;
                 throw new PagoIncorrectoException("No ingresaste una moneda valida");
             }
             else{
-                sonido=b.sabor();
-                vuelto=0;
+                sonido = b.sabor();
+                vuelto = 0;
                 Moneda vueltoMoneda = exp.getVuelto();
                 while (vueltoMoneda != null) {
                     vuelto += vueltoMoneda.getValor();
+                    depMonvu.addElemento(vueltoMoneda);
                     vueltoMoneda = exp.getVuelto();
                 }
             }
@@ -46,5 +49,8 @@ package Tarea2;
         }
         public Producto getProducto(){
             return b;
+        }
+        public Moneda getVuelto(){
+            return depMonvu.getElemento();
         }
     }

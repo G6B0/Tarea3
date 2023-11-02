@@ -25,21 +25,21 @@ public class PanelComprador extends JPanel implements MouseListener {
     private VistasMonedas moneda1000;
     private VistasMonedas moneda1500;
     private Moneda escogida;
-
     private int x;
     private int y;
-    private int respuesta =JOptionPane.NO_OPTION;
+    private int respuesta = JOptionPane.NO_OPTION;
     private Comprador comprador;
     private Expendedor expendedor;
     private int vuelto;
     private Producto producto;
+    private VistasDeposito<VistasMonedas> depMonvu;
 
     public PanelComprador(PanelExpendedor panelExpendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         x = 100;
         y = 30;
         this.setLayout(null);
         this.expendedor = panelExpendedor.getExpendedor();
-        setPreferredSize(new Dimension(600,800));
+        setPreferredSize(new Dimension(600,900));
         JLabel Cocacola = new JLabel("Coca-Cola");
         JLabel Sprite = new JLabel("Sprite");
         JLabel Fanta = new JLabel("Fanta");
@@ -76,9 +76,9 @@ public class PanelComprador extends JPanel implements MouseListener {
         snick.setPreferredSize(new Dimension(80, 50));
         su8.setPreferredSize(new Dimension(80, 50));
 
-        moneda100 = new VistasMonedas(new Moneda100(),Color.BLUE);
+        moneda100 = new VistasMonedas(new Moneda100(),Color.CYAN);
         moneda500 = new VistasMonedas(new Moneda500(),Color.MAGENTA);
-        moneda1000 = new VistasMonedas(new Moneda1000(),Color.RED);
+        moneda1000 = new VistasMonedas(new Moneda1000(),Color.GREEN);
         moneda1500 = new VistasMonedas(new Moneda1500(),Color.YELLOW);
 
         moneda100.addMouseListener(this);
@@ -121,13 +121,13 @@ public class PanelComprador extends JPanel implements MouseListener {
         Comprar3.addMouseListener(this);
         Comprar4.addMouseListener(this);
         Comprar5.addMouseListener(this);
+        depMonvu = new VistasDeposito<>();
     }
 
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         coca.setBounds(x - 100, y, 90, 70);
         add(coca);
         sprt.setBounds(x - 100, y + 100, 90, 70);
@@ -146,34 +146,20 @@ public class PanelComprador extends JPanel implements MouseListener {
         add(moneda1000);
         moneda1500.setBounds(x+120,y+450,100,100);
         add(moneda1500);
+        if(depMonvu!=null){
+            depMonvu.setBounds(1,600,350,90);
+            add(depMonvu);
+        }
     }
-  public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                JFrame frame = new JFrame("Expendedor de Bebidas");
-                PanelComprador panelComprador = null;
-                try {
-                    panelComprador = new PanelComprador(new PanelExpendedor(3));
-                } catch (NoHayProductoException e) {
-                    throw new RuntimeException(e);
-                } catch (PagoInsuficienteException e) {
-                    throw new RuntimeException(e);
-                } catch (PagoIncorrectoException e) {
-                    throw new RuntimeException(e);
-                }
-                frame.add(panelComprador);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(900, 900);
-                frame.setLayout(null);
-                panelComprador.setBounds(0, 0, 600, 900);
-                frame.setVisible(true);
-            });
+    public void vistasMonvu(VistasDeposito<VistasMonedas> vistasDeposito) {
+        Moneda moneda = comprador.getVuelto();
+        while (moneda != null) {
+            vistasDeposito.agregarProducto(new VistasMonedas(moneda, Color.YELLOW));
+            moneda = comprador.getVuelto();
+        }
+        repaint();
+        JOptionPane.showMessageDialog(null, "Aqui esta su vuelto, Gracias por su compra");
     }
-    public Moneda getMonedaEscogida(){
-        return escogida;
-    }
-public int getVuelto(){
-        return vuelto;
-}
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent()==moneda100){
@@ -203,6 +189,7 @@ public int getVuelto(){
                     comprador = new Comprador(escogida,1,expendedor);
                     producto =comprador.getProducto();
                    this.vuelto=comprador.cuantoVuelto();
+                    vistasMonvu(depMonvu);
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -218,7 +205,6 @@ public int getVuelto(){
                 JOptionPane.showMessageDialog(null,"Cancelaste la compra");
             }
         }
-
         else if(e.getComponent()==Comprar2 && ((moneda100.getMoneda() == escogida)||(moneda500.getMoneda() == escogida)||(moneda1000.getMoneda() == escogida)||(moneda1500.getMoneda() == escogida))){
             respuesta = JOptionPane.showConfirmDialog(null,"¿Estás seguro de continuar","Compra Sprite",JOptionPane.YES_NO_OPTION);
             if(respuesta == JOptionPane.YES_OPTION){
@@ -226,6 +212,7 @@ public int getVuelto(){
                     comprador = new Comprador(escogida,2,expendedor);
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
+                    vistasMonvu(depMonvu);
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -249,6 +236,7 @@ public int getVuelto(){
                     comprador = new Comprador(escogida,3,expendedor);
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
+                    vistasMonvu(depMonvu);
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -272,6 +260,7 @@ public int getVuelto(){
                     comprador = new Comprador(escogida,4,expendedor);
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
+                    vistasMonvu(depMonvu);
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -295,6 +284,7 @@ public int getVuelto(){
                     comprador = new Comprador(escogida,5,expendedor);
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
+                    vistasMonvu(depMonvu);
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");

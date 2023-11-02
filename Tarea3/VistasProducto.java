@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class VistasProducto extends JPanel {
     private BufferedImage imagen;
-    private Producto producto;
     private int ancho;
     private int alto;
 
@@ -19,7 +18,6 @@ public class VistasProducto extends JPanel {
         super();
         this.ancho=ancho;
         this.alto=alto;
-        this.producto = producto;
         super.setToolTipText(producto.sabor());
         setPreferredSize(new Dimension(ancho, alto));
         if(producto instanceof CocaCola){
@@ -34,7 +32,6 @@ public class VistasProducto extends JPanel {
             imagen=cargarImagen("images/super8.png");
         }
     }
-
     private BufferedImage cargarImagen(String ruta) {
         try {
             return ImageIO.read(new File(ruta));
@@ -43,7 +40,6 @@ public class VistasProducto extends JPanel {
             return null;
         }
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -51,22 +47,4 @@ public class VistasProducto extends JPanel {
             g.drawImage(imagen, 0, 0,ancho,alto, this);
         }
     }
-    /*public static void main(String[] args) {
-
-        VistasProducto producto = new VistasProducto(new CocaCola(2), 90, 60);
-
-        // Crea un JFrame y un panel para contener el producto
-        JFrame frame = new JFrame("Prueba de Producto");
-        JPanel panel = new JPanel();
-
-        // Agrega el producto al panel
-        panel.add(producto);
-
-        // Agrega el panel al JFrame
-        frame.add(panel);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 100);
-        frame.setVisible(true);
-    }*/
 }

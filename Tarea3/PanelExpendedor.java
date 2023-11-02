@@ -72,18 +72,6 @@ import java.io.IOException;
         public Expendedor getExpendedor() {
             return expendedor;
         }
-        public void vistasMonvu(VistasDeposito<VistasMonedas> vistasDeposito) {
-            Moneda moneda = expendedor.getVuelto();
-            while (moneda != null) {
-                if (vistasDeposito.getDeposito().getElemento()==null) {
-                    vistasDeposito.agregarProducto(new VistasMonedas(moneda, Color.YELLOW));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Aqui esta su vuelto, Gracias por su compra");
-                }
-                moneda = expendedor.getVuelto();
-            }
-        }
-
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -152,16 +140,5 @@ import java.io.IOException;
         }
         @Override
         public void mouseExited(MouseEvent e) {
-        }
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                JFrame frame = new JFrame();
-                PanelExpendedor panelExpendedor = new PanelExpendedor(3);
-
-                frame.add(panelExpendedor);
-                frame.setSize(700, 700);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setVisible(true);
-            });
         }
     }

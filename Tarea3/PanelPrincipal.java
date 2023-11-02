@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 public class PanelPrincipal extends JPanel implements MouseListener {
     private PanelComprador com;
     private PanelExpendedor exp;
-    private VistasDeposito<VistasMonedas> depMonvu;
 
     public PanelPrincipal() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         exp = new PanelExpendedor(3);
@@ -22,7 +21,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         com.getComprar3().addMouseListener(this);
         com.getComprar4().addMouseListener(this);
         com.getComprar5().addMouseListener(this);
-        depMonvu=new VistasDeposito<>();
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -34,13 +32,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         }
         if (com != null) {
             add(com);
-            com.setLocation(900,0);
+            com.setLocation(860,0);
             com.paintComponent(g);
-        }
-        if(depMonvu != null){
-            add(depMonvu);
-            depMonvu.setBounds(900,600,100,100);
-            depMonvu.paintComponent(g);
         }
         repaint();
     }
@@ -71,7 +64,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
-                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -82,7 +74,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
-                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -93,7 +84,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
-                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -104,7 +94,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
-                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -115,7 +104,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
-                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
