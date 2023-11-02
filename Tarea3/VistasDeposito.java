@@ -37,7 +37,7 @@ public class VistasDeposito<T extends Component> extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(0, 0, 340, 90);
+        g.drawRect(0, 0, 350, 90);
 
         int cantidad = deposito.deposito.size();
         int regionAncho = 330/ 3;

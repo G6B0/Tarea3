@@ -100,7 +100,7 @@ public class Expendedor {
 
                 else {
                     if(selector==1) {
-                        int vuelto= moneda.getValor() - TipoProductos.COCACOLA.getPrecio();
+                        int vuelto = moneda.getValor() - TipoProductos.COCACOLA.getPrecio();
                         while (vuelto > 0) {
                             if (vuelto >= 1500) {
                                 monVu.addElemento(new Moneda1500());
