@@ -39,9 +39,10 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         }
         if(depMonvu != null){
             add(depMonvu);
-            depMonvu.setLocation(900,600);
+            depMonvu.setBounds(900,600,100,100);
             depMonvu.paintComponent(g);
         }
+        repaint();
     }
 
     public static void main(String[] args) {
@@ -69,52 +70,56 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         if(e.getComponent()==com.getComprar1 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.cambioVista(com.getMonedaEscogida(),1);
+                exp.cambioVista(com.getProducto());
                 exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
         if(e.getComponent()==com.getComprar2 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.cambioVista(com.getMonedaEscogida(),2);
+                exp.cambioVista(com.getProducto());
+                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
         if(e.getComponent()==com.getComprar3 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.cambioVista(com.getMonedaEscogida(),3);
+                exp.cambioVista(com.getProducto());
+                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
         if(e.getComponent()==com.getComprar4 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.cambioVista(com.getMonedaEscogida(),4);
+                exp.cambioVista(com.getProducto());
+                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
         if(e.getComponent()==com.getComprar5 () && com.getRespuesta()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
-                exp.cambioVista(com.getMonedaEscogida(),4);
+                exp.cambioVista(com.getProducto());
+                exp.vistasMonvu(depMonvu);
             } catch (PagoInsuficienteException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
         repaint();

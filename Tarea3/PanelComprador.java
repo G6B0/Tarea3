@@ -32,6 +32,7 @@ public class PanelComprador extends JPanel implements MouseListener {
     private Comprador comprador;
     private Expendedor expendedor;
     private int vuelto;
+    private Producto producto;
 
     public PanelComprador(PanelExpendedor panelExpendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         x = 100;
@@ -128,10 +129,8 @@ public class PanelComprador extends JPanel implements MouseListener {
         super.paintComponent(g);
 
         coca.setBounds(x - 100, y, 90, 70);
-        coca.paintComponent(g);
         add(coca);
         sprt.setBounds(x - 100, y + 100, 90, 70);
-        sprt.paintComponent(g);
         add(sprt);
         fnt.setBounds(x - 100, y + 200, 90, 70);
         add(fnt);
@@ -202,6 +201,7 @@ public int getVuelto(){
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,1,expendedor);
+                    producto =comprador.getProducto();
                    this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
                     respuesta =JOptionPane.NO_OPTION;
@@ -224,12 +224,16 @@ public int getVuelto(){
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,2,expendedor);
+                    producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");
                 } catch (PagoInsuficienteException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
                 }
             }
@@ -243,12 +247,16 @@ public int getVuelto(){
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,3,expendedor);
+                    producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");
                 } catch (PagoInsuficienteException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
                 }
             }
@@ -262,12 +270,16 @@ public int getVuelto(){
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,4,expendedor);
+                    producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");
                 } catch (PagoInsuficienteException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
                 }
             }
@@ -281,12 +293,16 @@ public int getVuelto(){
             if(respuesta == JOptionPane.YES_OPTION){
                 try {
                     comprador = new Comprador(escogida,5,expendedor);
+                    producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                 } catch (NoHayProductoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
                 } catch (PagoIncorrectoException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");
                 } catch (PagoInsuficienteException ex) {
+                    respuesta =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
                 }
             }
@@ -319,6 +335,9 @@ public int getVuelto(){
     }
     public int getRespuesta(){
         return respuesta;
+    }
+    public Producto getProducto(){
+        return producto;
     }
 
     @Override

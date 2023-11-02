@@ -13,7 +13,7 @@ public class Expendedor {
     private Deposito<Dulces> snickers;
     /**Deposito de super8*/
     private Deposito<Producto> productoSeleccionado;
-    public Deposito<Dulces> super8;
+    private Deposito<Dulces> super8;
     /**Constructor llena los depositos de los productos
      * @param numProductos
      */
@@ -206,5 +206,25 @@ public class Expendedor {
     }
     public Producto getProducto(){
         return productoSeleccionado.getElemento();
+    }
+
+    public Deposito<Bebida> getCoca() {
+        return coca;
+    }
+
+    public Deposito<Bebida> getSprite() {
+        return sprite;
+    }
+
+    public Deposito<Bebida> getFanta() {
+        return fanta;
+    }
+
+    public Deposito<Dulces> getSnickers() {
+        return snickers;
+    }
+
+    public Deposito<Dulces> getSuper8() {
+        return super8;
     }
 }
