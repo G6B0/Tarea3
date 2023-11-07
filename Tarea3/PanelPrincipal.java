@@ -21,6 +21,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         com.getComprar3().addMouseListener(this);
         com.getComprar4().addMouseListener(this);
         com.getComprar5().addMouseListener(this);
+        com.getTomarVuelto().addMouseListener(this);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -60,7 +61,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getComponent()==com.getComprar1 () && com.getRespuesta()== JOptionPane.YES_OPTION){
+        if(e.getComponent()==com.getComprar1 () && com.getRespuestaCompra()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
@@ -70,7 +71,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
                 JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
-        if(e.getComponent()==com.getComprar2 () && com.getRespuesta()== JOptionPane.YES_OPTION){
+        if(e.getComponent()==com.getComprar2 () && com.getRespuestaCompra()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
@@ -80,7 +81,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
                 JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
-        if(e.getComponent()==com.getComprar3 () && com.getRespuesta()== JOptionPane.YES_OPTION){
+        if(e.getComponent()==com.getComprar3 () && com.getRespuestaCompra()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
@@ -90,7 +91,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
                 JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
-        if(e.getComponent()==com.getComprar4 () && com.getRespuesta()== JOptionPane.YES_OPTION){
+        if(e.getComponent()==com.getComprar4 () && com.getRespuestaCompra()== JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
@@ -100,7 +101,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
                 JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
         }
-        if(e.getComponent()==com.getComprar5 () && com.getRespuesta()== JOptionPane.YES_OPTION){
+        if(e.getComponent()==com.getComprar5 () && com.getRespuestaCompra() == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
@@ -109,10 +110,25 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             } catch (PagoIncorrectoException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");;
             }
+        }
+        if(e.getComponent()==com.getTomarVuelto() && com.getRespuestaProductoSelec()==JOptionPane.YES_OPTION){
+            exp.vaciarDepProductoSelec();
+
         }
         repaint();
     }
-
+public void denegarCompra(boolean set){
+    if (set) {
+        com.getTomarVuelto().setEnabled(true);
+        com.getComprar1().setEnabled(false);
+        com.getComprar2().setEnabled(false);
+        com.getComprar3().setEnabled(false);
+        com.getComprar4().setEnabled(false);
+        com.getComprar5().setEnabled(false);
+    } else {
+        JOptionPane.showMessageDialog(null, "No has realizado una compra exitosa.");
+    }
+}
     @Override
     public void mousePressed(MouseEvent e) {
 

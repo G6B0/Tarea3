@@ -56,7 +56,6 @@ import java.io.IOException;
             this.productoSelec=producto;
             if(productoSelec instanceof CocaCola){
                 depProductoSelec.agregarProducto(depCocacola.quitarVista());
-
             }else if(productoSelec instanceof Sprite){
                 depProductoSelec.agregarProducto(depSprite.quitarVista());
             }else if(productoSelec instanceof Fanta){
@@ -68,7 +67,16 @@ import java.io.IOException;
             }
             repaint();
         }
-
+        public void vaciarDepProductoSelec() {
+            while (true) {
+                VistasProducto vistaProducto = depProductoSelec.quitarVista();
+                if (vistaProducto == null) {
+                    break;
+                }
+                remove(vistaProducto);
+                repaint();
+            }
+        }
         public Expendedor getExpendedor() {
             return expendedor;
         }
@@ -141,4 +149,5 @@ import java.io.IOException;
         @Override
         public void mouseExited(MouseEvent e) {
         }
+
     }
