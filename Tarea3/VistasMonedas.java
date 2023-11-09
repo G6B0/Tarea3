@@ -33,14 +33,4 @@ public class VistasMonedas extends JPanel {
     public Moneda getMoneda(){
         return moneda;
     }
-public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Mi Aplicación");
-            VistasMonedas moneda = new VistasMonedas(new Moneda100(),Color.CYAN);
-            frame.add(moneda);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1900, 1080);
-            frame.setVisible(true);
-        });
-    }
 }

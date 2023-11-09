@@ -1,7 +1,6 @@
 package Tarea3;
 
 import java.awt.*;
-import javax.swing.border.Border;
 import Tarea2.*;
 import javax.swing.*;
 
