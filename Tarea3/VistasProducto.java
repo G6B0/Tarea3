@@ -8,11 +8,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+/**Clase que representa tipo de producto con una imagen y una dimension*/
 public class VistasProducto extends JPanel {
+    /**Propiedad imagen del respectivo producto*/
     private BufferedImage imagen;
     private int ancho;
     private int alto;
+    /**Constructor inicializa el tipo de producto y su respectivo ancho y alto
+     *ademas agrega una informacion de uso y carga la imagen asociada al producto
+     * */
 
     public VistasProducto(Producto producto,int ancho, int alto) {
         super();
@@ -32,6 +36,11 @@ public class VistasProducto extends JPanel {
             imagen=cargarImagen("images/super8.png");
         }
     }
+    /**Metodo para cargar una imagen y en este caso para producto
+     * @param ruta
+     * @return null si se lanza la exception
+     * @return leido de la imagen
+     * */
     private BufferedImage cargarImagen(String ruta) {
         try {
             return ImageIO.read(new File(ruta));
@@ -40,6 +49,8 @@ public class VistasProducto extends JPanel {
             return null;
         }
     }
+    /**Metodo paint, principalmente para dibujar la imagen del directorio
+     * @param g */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

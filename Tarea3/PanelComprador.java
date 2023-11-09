@@ -168,7 +168,6 @@ public class PanelComprador extends JPanel implements MouseListener {
                     producto =comprador.getProducto();
                    this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
-                    tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
                     respuestaCompra =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -192,7 +191,6 @@ public class PanelComprador extends JPanel implements MouseListener {
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
-                    tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
                     respuestaCompra =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -217,7 +215,6 @@ public class PanelComprador extends JPanel implements MouseListener {
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
-                    tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
                     respuestaCompra =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -242,7 +239,6 @@ public class PanelComprador extends JPanel implements MouseListener {
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
-                    tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
                     respuestaCompra =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
@@ -267,7 +263,6 @@ public class PanelComprador extends JPanel implements MouseListener {
                     producto =comprador.getProducto();
                     this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
-                    tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
                     respuestaCompra =JOptionPane.NO_OPTION;
                     JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
