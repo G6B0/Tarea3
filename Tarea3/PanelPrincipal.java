@@ -22,7 +22,6 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         com.getComprar4().addMouseListener(this);
         com.getComprar5().addMouseListener(this);
         com.getTomarVuelto().addMouseListener(this);
-        com.getTomarVuelto().addMouseListener(this);
     }
     /**Metodo paint el cual pinta y agrega panel expendedor y comprador
      * @param g
