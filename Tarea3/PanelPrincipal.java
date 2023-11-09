@@ -22,6 +22,7 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         com.getComprar4().addMouseListener(this);
         com.getComprar5().addMouseListener(this);
         com.getTomarVuelto().addMouseListener(this);
+        com.getTomarVuelto().addMouseListener(this);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -65,6 +66,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
+                com.getTomarVuelto().setEnabled(true);
+                com.getTomarVuelto().addMouseListener(this);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -75,6 +78,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
+                com.getTomarVuelto().setEnabled(true);
+                com.getTomarVuelto().addMouseListener(this);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -85,6 +90,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
+                com.getTomarVuelto().setEnabled(true);
+                com.getTomarVuelto().addMouseListener(this);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -95,6 +102,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
+                com.getTomarVuelto().setEnabled(true);
+                com.getTomarVuelto().addMouseListener(this);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -105,6 +114,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Estamos trabajando para ti :) danos unos segundos");
             try {
                 exp.cambioVista(com.getProducto());
+                com.getTomarVuelto().setEnabled(true);
+                com.getTomarVuelto().addMouseListener(this);
             } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
             } catch (PagoIncorrectoException ex) {
@@ -113,22 +124,11 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         }
         if(e.getComponent()==com.getTomarVuelto() && com.getRespuestaProductoSelec()==JOptionPane.YES_OPTION){
             exp.vaciarDepProductoSelec();
-
+            com.getTomarVuelto().setEnabled(false);
+            com.getTomarVuelto().removeMouseListener(this);
         }
         repaint();
     }
-public void denegarCompra(boolean set){
-    if (set) {
-        com.getTomarVuelto().setEnabled(true);
-        com.getComprar1().setEnabled(false);
-        com.getComprar2().setEnabled(false);
-        com.getComprar3().setEnabled(false);
-        com.getComprar4().setEnabled(false);
-        com.getComprar5().setEnabled(false);
-    } else {
-        JOptionPane.showMessageDialog(null, "No has realizado una compra exitosa.");
-    }
-}
     @Override
     public void mousePressed(MouseEvent e) {
 
