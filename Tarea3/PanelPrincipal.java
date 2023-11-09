@@ -7,12 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+/**
+ * Clase PanelPrincipal, representa el panel principal de la aplicación de la máquina expendedora y su comprador.
+ * Este panel contiene tanto el PanelComprador como el PanelExpendedor, y gestiona las interacciones con el usuario.
+ *
+ * Se encarga de mostrar y posicionar estos paneles en la ventana principal y de manejar las interacciones del usuario.
+ */
 public class PanelPrincipal extends JPanel implements MouseListener {
     private PanelComprador com;
     private PanelExpendedor exp;
 
-    public PanelPrincipal() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+    public PanelPrincipal(){
         exp = new PanelExpendedor(3);
         com = new PanelComprador(exp);
         this.addMouseListener(this);
@@ -24,7 +29,8 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         com.getTomarVuelto().addMouseListener(this);
     }
     /**Metodo paint el cual pinta y agrega panel expendedor y comprador
-     * @param g
+     *
+     * @param g graficos del paintComponent
      */
     @Override
     protected void paintComponent(Graphics g) {
@@ -42,26 +48,12 @@ public class PanelPrincipal extends JPanel implements MouseListener {
         repaint();
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Mi Aplicación");
-            PanelPrincipal panelPrincipal = null;
-            try {
-                panelPrincipal = new PanelPrincipal();
-            } catch (NoHayProductoException ex) {
-                JOptionPane.showMessageDialog(null,"Nos quedamos sin producto de este tipo :c, compra no realizada");
-            } catch (PagoIncorrectoException ex) {
-                JOptionPane.showMessageDialog(null,"Pago Incorrecto, compra no realizada");
-            } catch (PagoInsuficienteException ex) {
-                JOptionPane.showMessageDialog(null,"Pago Insuficiente, compra no realizada");
-            }
-            frame.add(panelPrincipal);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1920, 1080);
-            frame.setVisible(true);
-        });
-    }
-
+    /**
+     * Metodo Override que se encarga de mover al hacer click cuando se compra un producto en los distintos depositos.
+     * Tambien se encarga de actualizar el boton tomarVuelto para poder retirar el vuelto.
+     *
+     * @param e evento a suceder
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent()==com.getComprar1 () && com.getRespuestaCompra()== JOptionPane.YES_OPTION){
