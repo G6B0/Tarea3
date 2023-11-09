@@ -8,30 +8,117 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Clase PanelComprador representa un panel gráfico que permite a los usuarios interactuar con un comprador de productos.
+ * Los usuarios pueden seleccionar productos, seleccionar monedas, realizar compras y recibir vuelto.
+ * Esta clase contiene botones para comprar productos, monedas para realizar pagos, y una interfaz para visualizar las operaciones realizadas.
+ *
+ * Los botones de compra están asociados a productos específicos, como Coca-Cola, Sprite, Fanta, Snicker y Super8.
+ * Los usuarios pueden seleccionar monedas para realizar pagos y, si es necesario, recibir el cambio.
+ *
+ * Esta clase utiliza instancias de las clases Comprador, Expendedor, Moneda, y Producto de la Tarea 2 para realizar las operaciones de compra y cambio.
+ */
 public class PanelComprador extends JPanel implements MouseListener {
+    /**
+     * Boton para comprar Coca-Cola.
+     */
     private JButton Comprar1;
+    /**
+     * Boton para comprar Sprite.
+     */
     private JButton Comprar2;
+    /**
+     * Boton para comprar Fanta.
+     */
     private JButton Comprar3;
+    /**
+     * Boton para comprar Snicker.
+     */
     private JButton Comprar4;
+    /**
+     * Boton para comprar Super8.
+     */
     private JButton Comprar5;
+    /**
+     * Boton para sacar el Vuelto.
+     */
     private JButton tomarVuelto;
+    /**
+     * Moneda de 100 a seleccionar para realizar compras.
+     */
     private VistasMonedas moneda100;
+    /**
+     * Moneda de 500 a seleccionar para realizar compras.
+     */
     private VistasMonedas moneda500;
+    /**
+     * Moneda de 1000 a seleccionar para realizar compras.
+     */
     private VistasMonedas moneda1000;
+    /**
+     * Moneda de 1500 a seleccionar para realizar compras.
+     */
     private VistasMonedas moneda1500;
+    /**
+     * Imagen de producto tipo Coca-Cola.
+     */
     private VistasProducto cocaCola;
+    /**
+     * Imagen de producto tipo Sprite.
+     */
     private VistasProducto sprite;
+    /**
+     * Imagen de producto tipo Fanta.
+     */
     private VistasProducto fanta;
+    /**
+     * Imagen de producto tipo Snicker.
+     */
     private VistasProducto snicker;
+    /**
+     * Imagen de producto tipo super8.
+     */
     private VistasProducto super8;
+    /**
+     * Verificador de compra exitosa;
+     */
     private int respuestaCompra = JOptionPane.NO_OPTION;
+    /**
+     * Verificador de retiro del producto comprado.
+     */
     private int respuestaProductoSelec = JOptionPane.NO_OPTION;
+    /**
+     * Comprador de tarea2
+     */
     private Comprador comprador;
+    /**
+     * Expendedor de tarea2
+     */
     private Expendedor expendedor;
+    /**
+     * Moneda de tarea2, se encarga de darle el valor a la moneda que
+     * se escoge.
+     */
     private Moneda escogida;
+    /**
+     * Vuelto de la compra realizada.
+     */
     private int vuelto;
+    /**
+     * Producto de tarea2, se encarga de guardar en memoria el producto que se compra.
+     */
     private Producto producto;
+    /**
+     * Deposito de monedas de vuelto. que se visualiza cuando se compra.
+     */
     private VistasDeposito<VistasMonedas> depMonvu;
+    /**
+     * Constructor de PanelComprador usa un PanelExpendedor para iniciarlo
+     * y usar su expendedor para usarlo en el comprador.
+     * Se encarga de inicializar y agregar al panel las Vistasmonedas, VistasProducto
+     * y los botones para comprar y retirar vuelto.
+     * Tambien agrega mouseListener a cada componente, es decir a las Vistasmonedas y a los Jbutton.
+     */
     public PanelComprador(PanelExpendedor panelExpendedor){
         this.setLayout(null);
         this.expendedor = panelExpendedor.getExpendedor();
@@ -68,18 +155,13 @@ public class PanelComprador extends JPanel implements MouseListener {
         Comprar4.setBounds(100, 360, 100, 30);
         Comprar5.setBounds(100, 460, 100, 30);
 
-        this.add(cocaCola);
-        this.add(fanta);
-        this.add(sprite);
-        this.add(snicker);
-        this.add(super8);
         this.add(Comprar1);
         this.add(Comprar2);
         this.add(Comprar3);
         this.add(Comprar4);
         this.add(Comprar5);
         this.add(tomarVuelto);
-        
+
         tomarVuelto.setEnabled(false);
         Comprar1.addMouseListener(this);
         Comprar2.addMouseListener(this);
@@ -88,7 +170,13 @@ public class PanelComprador extends JPanel implements MouseListener {
         Comprar5.addMouseListener(this);
     }
 
-
+    /**
+     * Metodo Override que se encarga de pintar y agregar las imagenes de los productos
+     * y las monedas al PanelComprador.
+     * si el deposito de monedas de vuelto es distinto del nulo entonces
+     * agrega al mismo las monedas de vuelto.
+     * @param g graficos del paintcomponent
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -116,6 +204,12 @@ public class PanelComprador extends JPanel implements MouseListener {
             add(depMonvu);
         }
     }
+
+    /**
+     * Metodo que se encarga de llenar el deposito de monedas de vuelto;
+     * @param vistasDeposito es un deposito de monedas, desde el cual se sacan
+     *                       las monedas para el conteo del vuelto.
+     */
     public void llenarDepMonvu(VistasDeposito<VistasMonedas> vistasDeposito) {
         Moneda moneda = comprador.getVuelto();
         while (moneda != null) {
@@ -124,6 +218,12 @@ public class PanelComprador extends JPanel implements MouseListener {
         }
         repaint();
     }
+
+    /**
+     *
+     * @param vistasDeposito es un deposito que se encarga de sacar las monedas de vuelto
+     *                       que fueron agregadas por el metodo llenarDepMonvu.
+     */
     public void vaciarDepMonvu(VistasDeposito<VistasMonedas> vistasDeposito){
         VistasMonedas vMoneda = vistasDeposito.quitarVista();
         while(vMoneda != null){
@@ -132,6 +232,14 @@ public class PanelComprador extends JPanel implements MouseListener {
         repaint();
         JOptionPane.showMessageDialog(null, "Aqui esta su vuelto, Gracias por su compra");
     }
+
+    /**
+     * Metodo que se encarga de seleccionar una moneda mediante el click.
+     * Tambien se encargade seleccionar el producto a comprar y de realizar la compra
+     * lanzando tambien mensajes dependiendo de si la compra es exitosa o no
+     * agregando vuelto a los depositos de monedas.
+     * @param e evento a suceder.
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent()==moneda100){
@@ -166,7 +274,7 @@ public class PanelComprador extends JPanel implements MouseListener {
                 try {
                     comprador = new Comprador(escogida,1,expendedor);
                     producto =comprador.getProducto();
-                   this.vuelto=comprador.cuantoVuelto();
+                    this.vuelto=comprador.cuantoVuelto();
                     llenarDepMonvu(depMonvu);
                     tomarVuelto.addMouseListener(this);
                 } catch (NoHayProductoException ex) {
@@ -287,37 +395,71 @@ public class PanelComprador extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(null,"Aun no has escogido una moneda!");
         }
     }
+
+
+    /**
+     * Getter de Comprar1(Para comprar Coca-Cola).
+     * @return El boton Comprar1.
+     */
     public JButton getComprar1() {
         return Comprar1;
     }
-
+    /**
+     * Getter de Comprar2(Para comprar Sprite).
+     * @return El boton Comprar2.
+     */
     public JButton getComprar2() {
         return Comprar2;
     }
-
+    /**
+     * Getter de Comprar3(Para comprar Fanta).
+     * @return El boton Comprar3.
+     */
     public JButton getComprar3() {
         return Comprar3;
     }
-
+    /**
+     * Getter de Comprar4(Para comprar Snicker).
+     * @return El boton Comprar4.
+     */
     public JButton getComprar4() {
         return Comprar4;
     }
-
+    /**
+     * Getter de Comprar5(Para comprar Super8).
+     * @return El boton Comprar5.
+     */
     public JButton getComprar5() {
         return Comprar5;
     }
+    /**
+     * Getter de respuestaCompra.
+     * @return si la respuesta es afirmativa o no.
+     */
     public int getRespuestaCompra(){
         return respuestaCompra;
     }
+    /**
+     * Getter de respuestaProductoSelec.
+     * @return si la respuesta es afirmativa o no.
+     */
     public int getRespuestaProductoSelec(){
         return respuestaProductoSelec;
     }
+    /**
+     * Getter de producto.
+     * @return el producto comprado.
+     */
     public Producto getProducto(){
         return producto;
     }
+    /**
+     * Getter de tomarVuelto
+     * @return el vuelto de la compra.
+     */
     public JButton getTomarVuelto(){
         return  tomarVuelto;
-}
+    }
     @Override
     public void mousePressed(MouseEvent e) {
 
