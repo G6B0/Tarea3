@@ -4,7 +4,9 @@ import java.awt.*;
 import Tarea2.*;
 import javax.swing.*;
 
-
+/**Esta clase representa la vista gráfica de un depósito de elementos genéricos que extienden la clase Component.
+ * @param <T> Tipo genérico que extiende la clase Component, que representa el tipo de elementos almacenados en el depósito.
+ */
 public class VistasDeposito<T extends Component> extends JPanel {
     private Deposito<T> deposito;
 /**Constructor inicializa el deposito clase tarea2 y el tamaño de su vista fijo*/
@@ -21,7 +23,9 @@ public class VistasDeposito<T extends Component> extends JPanel {
     public Deposito<T> getDeposito() {
         return deposito;
     }
-
+    /**Quita la vista del último elemento agregado al depósito, simulando su retiro de la máquina expendedora.
+     * @return Elemento genérico retirado de la vista, o null si el depósito está vacío.
+     */
     public T quitarVista() {
         if (deposito.deposito.size() == 0) {
             return null;
